@@ -1,0 +1,48 @@
+---
+openapi: 3.0.0
+info:
+  title: FDSAP API
+  description: Try swagger in GO Lang
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/r3bago/API/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://localhost:8000
+  description: SwaggerHub API Auto Mocking
+paths:
+  /get_users:
+    get:
+      summary: Returns list of users
+      responses:
+        "200":
+          description: Record found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "403":
+          description: Forbidden
+        "404":
+          description: Record not found
+components:
+  schemas:
+    User:
+      required:
+      - fullname
+      - password
+      - user_id
+      - username
+      type: object
+      properties:
+        user_id:
+          type: integer
+          example: 13
+        fullname:
+          type: string
+          example: Raymond E. Bago
+        username:
+          type: string
+          example: rebago123
+        password:
+          type: string
+          example: Letmein123
